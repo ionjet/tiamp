@@ -33,6 +33,7 @@ NetBeans: clone jsoncpp repo as a sibling of tiamp, NetBeans project already has
 
 The idea
 ========
+```
 +-------------------------------+                            
 |          Raspberry Pi         |                            
 |                               |     +----------+           
@@ -57,4 +58,4 @@ The idea
         |                                             |      
         +------------status---------------------------+      
 
-
+```
