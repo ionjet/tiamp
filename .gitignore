@@ -26,3 +26,6 @@
 *.exe
 *.out
 *.app
+
+# NetBeans private project settings
+/nbproject/private/*
