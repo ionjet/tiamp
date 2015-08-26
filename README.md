@@ -14,16 +14,14 @@ Intended to be used as a hardware abstraction layer by [tinod][tinod]
 
 NetBeans project included
 
-Dependencies
-============
+## Dependencies
 
-bcm2835 gpio library
---------------------
+
+### bcm2835 gpio library
 [bcm2835 gpio library][bcm2835] by Mike McCauley
 
 
-JsonCpp
--------
+### JsonCpp
 [jsoncpp][jsoncpp]
 read jsoncpp readme first.
 run amalgamate.py
@@ -31,8 +29,8 @@ run amalgamate.py
 NetBeans: clone jsoncpp repo as a sibling of tiamp, NetBeans project already has them referenced.
 
 
-The idea
-========
+## The idea
+
 ```
 +-------------------------------+                            
 |          Raspberry Pi         |                            
