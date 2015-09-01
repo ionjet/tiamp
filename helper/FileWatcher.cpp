@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
+#include <unistd.h>
 #include "FileWatcher.h"
 
 FileWatcher::FileWatcher(std::string folder) {
@@ -23,7 +24,7 @@ FileWatcher::FileWatcher(const FileWatcher& orig) {
 }
 
 FileWatcher::~FileWatcher() {
-    release();
+    dispose();
 }
 
 int FileWatcher::init() {
@@ -38,7 +39,7 @@ int FileWatcher::init() {
     }
 }
 
-int FileWatcher::release() {
+int FileWatcher::dispose() {
     std::list<int>::iterator it;
     for (it = file_watches.begin(); it != file_watches.end(); it++) {
         (void) inotify_rm_watch(notify_fd, *it);

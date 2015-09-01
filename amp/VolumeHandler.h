@@ -17,7 +17,7 @@ class VolumeHandler: public FileEventHandler {
 public:
     VolumeHandler(std::string name, Amp * amp);
     
-    virtual int modified();
+    virtual int modified(int fd);
     
 protected:
     int setVolume(float volume);    

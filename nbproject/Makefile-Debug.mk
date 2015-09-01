@@ -35,9 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/1267889001/jsoncpp.o \
 	${OBJECTDIR}/amp/Amp.o \
 	${OBJECTDIR}/amp/VolumeHandler.o \
 	${OBJECTDIR}/helper/FileWatcher.o \
+	${OBJECTDIR}/helper/PipeWatcher.o \
 	${OBJECTDIR}/hw/TAS5548.o \
 	${OBJECTDIR}/main.o
 
@@ -66,6 +68,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tiamp: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tiamp ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/_ext/1267889001/jsoncpp.o: ../jsoncpp/dist/jsoncpp.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1267889001
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1267889001/jsoncpp.o ../jsoncpp/dist/jsoncpp.cpp
+
 ${OBJECTDIR}/amp/Amp.o: amp/Amp.cpp 
 	${MKDIR} -p ${OBJECTDIR}/amp
 	${RM} "$@.d"
@@ -80,6 +87,11 @@ ${OBJECTDIR}/helper/FileWatcher.o: helper/FileWatcher.cpp
 	${MKDIR} -p ${OBJECTDIR}/helper
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/helper/FileWatcher.o helper/FileWatcher.cpp
+
+${OBJECTDIR}/helper/PipeWatcher.o: helper/PipeWatcher.cpp 
+	${MKDIR} -p ${OBJECTDIR}/helper
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/helper/PipeWatcher.o helper/PipeWatcher.cpp
 
 ${OBJECTDIR}/hw/TAS5548.o: hw/TAS5548.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hw

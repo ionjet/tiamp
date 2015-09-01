@@ -9,7 +9,7 @@
 #define	AMP_H
 
 #include <list>
-#include <bcm2835.h>
+//#include <bcm2835.h>
 #include "../hw/TAS5548.h"
 #include "../hw/TAS5631B.h"
 

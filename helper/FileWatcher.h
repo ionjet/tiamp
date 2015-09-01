@@ -12,13 +12,14 @@
 #include <list>
 #include <string>
 #include "FileEventHandler.h"
+#include "Watcher.h"
 
 
 #define EVENT_SIZE  (sizeof(struct inotify_event))
 #define BUF_LEN     (1024 * (EVENT_SIZE + 16))
 
 
-class FileWatcher {
+class FileWatcher : public Watcher {
 public:
     FileWatcher(std::string folder);
     FileWatcher(const FileWatcher& orig);
@@ -26,7 +27,7 @@ public:
     int addWatch(FileEventHandler *);
     int init();
     int watch();
-    int release();
+    int dispose();
 protected:
     
 private:

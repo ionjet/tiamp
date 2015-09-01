@@ -20,22 +20,27 @@ public:
     }
 
     virtual int accessed() {
-        std::cout << "FileEventHandler::accessed " << name << "\n";
+        std::cout << "FileEventHandler::accessed " << name << endl;
         return 0;
     }
 
     virtual int created() {
-        std::cout << "FileEventHandler::created " << name << "\n";
+        std::cout << "FileEventHandler::created " << name << endl;
         return 0;
     }
 
     virtual int modified() {
-        std::cout << "FileEventHandler::modified " << name << "\n";
+        std::cout << "FileEventHandler::modified " << name << endl;
+        return 0;
+    }
+
+    virtual int modified(int fd) {
+        std::cout << "FileEventHandler::modified " << name << " descriptor " << fd << endl;
         return 0;
     }
 
     virtual int deleted() {
-        std::cout << "FileEventHandler::deleted " << name << "\n";
+        std::cout << "FileEventHandler::deleted " << name << endl;
         return 0;
     }
 

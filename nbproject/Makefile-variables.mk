@@ -15,13 +15,21 @@ CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Debug=tiamp.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/tiamp.tar
 # Release configuration
-CND_PLATFORM_Release=None-Linux-x86
-CND_ARTIFACT_DIR_Release=dist/Release/None-Linux-x86
+CND_PLATFORM_Release=GNU-Linux-x86
+CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
 CND_ARTIFACT_NAME_Release=tiamp
-CND_ARTIFACT_PATH_Release=dist/Release/None-Linux-x86/tiamp
-CND_PACKAGE_DIR_Release=dist/Release/None-Linux-x86/package
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/tiamp
+CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Release=tiamp.tar
-CND_PACKAGE_PATH_Release=dist/Release/None-Linux-x86/package/tiamp.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/tiamp.tar
+# Vagrant_Debug configuration
+CND_PLATFORM_Vagrant_Debug=GNU-Linux-x86
+CND_ARTIFACT_DIR_Vagrant_Debug=dist/Vagrant_Debug/GNU-Linux-x86
+CND_ARTIFACT_NAME_Vagrant_Debug=tiamp
+CND_ARTIFACT_PATH_Vagrant_Debug=dist/Vagrant_Debug/GNU-Linux-x86/tiamp
+CND_PACKAGE_DIR_Vagrant_Debug=dist/Vagrant_Debug/GNU-Linux-x86/package
+CND_PACKAGE_NAME_Vagrant_Debug=tiamp.tar
+CND_PACKAGE_PATH_Vagrant_Debug=dist/Vagrant_Debug/GNU-Linux-x86/package/tiamp.tar
 #
 # include compiler specific variables
 #

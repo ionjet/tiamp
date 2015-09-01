@@ -6,13 +6,20 @@
  */
 
 #include <cstdlib>
-#include <bcm2835.h>
+//#include <bcm2835.h>
 #include <unistd.h>
 #include <iostream>
 #include <stdio.h>
 
 #include "helper/FileWatcher.h"
 #include "amp/VolumeHandler.h"
+#include "helper/PipeWatcher.h"
+#include <fcntl.h>
+#include <unistd.h>
+#include <poll.h>
+#include <sys/stat.h>
+
+#define PIPE_BUF 64
 
 using namespace std;
 
@@ -24,41 +31,14 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     printf("Welcome ...\n");
-    
-    VolumeHandler *hVolume = new VolumeHandler("vol", NULL);
-    
-    FileWatcher *w = new FileWatcher("/tmp");
-    w->init();
-    w->addWatch(hVolume);
-    w->watch();
-    
-    
-    
-    printf("Welcome ...\n");
-    if (!bcm2835_init())
-	return 1;
-    
-        // Set the pin to be an output
-    bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_OUTP);
 
-    // Blink
-    while (1)
-    {
-	// Turn it on
-	bcm2835_gpio_write(PIN, HIGH);
-	
-	// wait a bit
-	bcm2835_delay(500);
-	
-	// turn it off
-	bcm2835_gpio_write(PIN, LOW);
-	
-	// wait a bit
-	bcm2835_delay(1000);
-        cout << "blink!";
-    }
-    bcm2835_close();
-    return 0;
-        
+    VolumeHandler *volume1 = new VolumeHandler("/tmp/vol", NULL);
+    
+    PipeWatcher *pw = new PipeWatcher();
+    pw->init();
+    pw->addWatch(volume1);
+    pw->watch();
+    
+    exit(0);    
 }
 

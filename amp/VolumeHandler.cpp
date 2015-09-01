@@ -7,27 +7,24 @@
 
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
+#include <unistd.h>
 #include "VolumeHandler.h"
 #include "../helper/FileEventHandler.h"
+
+#define BUF 50
 
 VolumeHandler::VolumeHandler(std::string name, Amp * amp) : FileEventHandler(name) {
     this->amp = amp;
 }
 
-int VolumeHandler::modified() {
-    std::cout << "VolumeHandler::modified ";
-    std::string file = folder + "/" + name;
-    std::ifstream myfile(file.data());
-    std::string line;
-    if (myfile.is_open()) {
-        if (getline(myfile, line)) {
-            std::cout << line << "\n";
-            // TODO: convert to float and call setVolume()
-        } else {
-            std::cout << "<<EMPTY>>\n";
-        }
-        myfile.close();
-    } else {
-        std::cout << "<<can't open " << file << ">>\n";
-    }
+// assuming we are watching a pipe
+int VolumeHandler::modified(int fd) {
+    char  buf[BUF];
+    int len = read(fd, &buf, BUF);                
+    
+    std::cout << "VolumeHandler::modified: " << strtod(buf, NULL) << endl;
+    // TODO: convert to float and call setVolume()
+    // TODO: set global configuration object property(es), save JSON
+    return 0;
 }

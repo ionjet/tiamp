@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=None-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
@@ -35,9 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/1267889001/jsoncpp.o \
 	${OBJECTDIR}/amp/Amp.o \
 	${OBJECTDIR}/amp/VolumeHandler.o \
 	${OBJECTDIR}/helper/FileWatcher.o \
+	${OBJECTDIR}/helper/PipeWatcher.o \
 	${OBJECTDIR}/hw/TAS5548.o \
 	${OBJECTDIR}/main.o
 
@@ -66,30 +68,40 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tiamp: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tiamp ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/_ext/1267889001/jsoncpp.o: ../jsoncpp/dist/jsoncpp.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1267889001
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1267889001/jsoncpp.o ../jsoncpp/dist/jsoncpp.cpp
+
 ${OBJECTDIR}/amp/Amp.o: amp/Amp.cpp 
 	${MKDIR} -p ${OBJECTDIR}/amp
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/amp/Amp.o amp/Amp.cpp
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/amp/Amp.o amp/Amp.cpp
 
 ${OBJECTDIR}/amp/VolumeHandler.o: amp/VolumeHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/amp
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/amp/VolumeHandler.o amp/VolumeHandler.cpp
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/amp/VolumeHandler.o amp/VolumeHandler.cpp
 
 ${OBJECTDIR}/helper/FileWatcher.o: helper/FileWatcher.cpp 
 	${MKDIR} -p ${OBJECTDIR}/helper
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/helper/FileWatcher.o helper/FileWatcher.cpp
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/helper/FileWatcher.o helper/FileWatcher.cpp
+
+${OBJECTDIR}/helper/PipeWatcher.o: helper/PipeWatcher.cpp 
+	${MKDIR} -p ${OBJECTDIR}/helper
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/helper/PipeWatcher.o helper/PipeWatcher.cpp
 
 ${OBJECTDIR}/hw/TAS5548.o: hw/TAS5548.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hw
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hw/TAS5548.o hw/TAS5548.cpp
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hw/TAS5548.o hw/TAS5548.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -I../jsoncpp/dist -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
